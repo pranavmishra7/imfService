@@ -13,5 +13,6 @@ namespace datamodel.models
         public bool IsActive { get; set; }
         public ICollection<InsurancePlan> InsurancePlans { get; set; }
         public DateTime LastUpdated { get; set; } = DateTime.Now;
+        public virtual InsuranceDetailsModel InsuranceDetails { get; set; }
     }
 }

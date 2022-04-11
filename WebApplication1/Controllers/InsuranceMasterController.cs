@@ -99,6 +99,27 @@ namespace WebApplication1.Controllers
             }
             return Ok(isSuccess);
         }
+
+        [HttpPost, Route("Plans")]
+        public IActionResult AddInsurancePolicy(InsuranceDetailsModel insuranceDetail)
+        {
+            //var existingInsurancePlan = insuranceplans[0].InsuranceCategoryId != Guid.Empty ? GetInsurancePlans(insuranceplans[0].InsuranceCategoryId) : null;
+
+            //if (existingInsurancePlan != null && existingInsurancePlan.Count > 0)
+            //{
+            //    using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            //    {
+            //        context.RemoveRange(existingInsurancePlan);
+            //        context.SaveChanges();
+            //    }
+            //}
+            //using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            //{
+            //    context.AddRange(insuranceplans);
+            //    context.SaveChanges();
+            //}
+            return Ok(insuranceDetail);
+        }
         #region private methods
 
         private bool isInsuranceCategoryExist(Guid id) 

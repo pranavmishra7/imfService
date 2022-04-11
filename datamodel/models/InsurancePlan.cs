@@ -17,5 +17,6 @@ namespace datamodel.models
         public Guid InsuranceCategoryId { get; set; }
         public InsuranceCategory InsuranceCategory { get; set; }
         public DateTime LastUpdated { get; set; } = DateTime.Now;
+        public virtual InsuranceDetailsModel InsuranceDetails {get; set;}
     }
 }
