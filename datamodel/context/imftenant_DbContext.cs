@@ -7,11 +7,11 @@ using System.IO;
 
 namespace datamodel
 {
-    public class cruse07_DbContext:DbContext
+    public class imftenant_DbContext:DbContext
     {
         public DbSet<InsuranceCategory> InsuranceCategories { get; set; }
         public DbSet<InsurancePlan> InsurancePlans { get; set; }
-        public cruse07_DbContext(DbContextOptions<cruse07_DbContext> options)
+        public imftenant_DbContext(DbContextOptions<imftenant_DbContext> options)
        : base(options)
         { 
         

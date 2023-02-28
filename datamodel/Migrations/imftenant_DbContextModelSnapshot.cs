@@ -8,8 +8,8 @@ using datamodel;
 
 namespace datamodel.Migrations
 {
-    [DbContext(typeof(cruse07_DbContext))]
-    partial class cruse07_DbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(imftenant_DbContext))]
+    partial class imftenant_DbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

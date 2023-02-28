@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
     [AllowAnonymous]
     public class InsuranceMasterController : ControllerBase
     {
-        private cruse07_DbContext context;
+        private imftenant_DbContext context;
        
         [HttpPost, Route("categories")]
         public IActionResult AddCategories(InsuranceCategory insuranceCategory)
@@ -37,13 +37,13 @@ namespace WebApplication1.Controllers
 
             if (existingInsurancePlan!=null && existingInsurancePlan.Count>0)
             {
-                using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+                using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
                 {
                     context.RemoveRange(existingInsurancePlan);
                     context.SaveChanges();
                 }
             }
-            using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
             {
                 context.AddRange(insuranceplans);
                 context.SaveChanges();
@@ -55,7 +55,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+                using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
                 {
                     var categories = context.InsuranceCategories.AsQueryable().OrderBy(orderBy +" "+ direction).ToList();
                     return Ok(categories);
@@ -78,7 +78,7 @@ namespace WebApplication1.Controllers
         public IActionResult DeletePlans([FromQuery] Guid id)
         {
             bool isSuccess = false;
-            using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
             {
                 var plans = context.InsurancePlans.Where(x => x.id == id).FirstOrDefault();
                 context.Remove<InsurancePlan>(plans);
@@ -91,7 +91,7 @@ namespace WebApplication1.Controllers
         public IActionResult DeleteCategory([FromQuery] Guid id)
         {
             bool isSuccess = false;
-            using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
             {
                 var categories = context.InsuranceCategories.Where(x => x.id == id).FirstOrDefault();
                 context.Remove<InsuranceCategory>(categories);
@@ -124,7 +124,7 @@ namespace WebApplication1.Controllers
 
         private bool isInsuranceCategoryExist(Guid id) 
         {
-            using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
             {
                 var result = context.InsuranceCategories.Where(x => x.id==id).Any() ? true : false;
                 return result;
@@ -133,7 +133,7 @@ namespace WebApplication1.Controllers
         }
         private InsuranceCategory AddInuranceCategory(InsuranceCategory insuranceCategory) 
         {
-            using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
             {
                 context.Add<InsuranceCategory>(insuranceCategory);
                 context.SaveChanges();
@@ -143,7 +143,7 @@ namespace WebApplication1.Controllers
         }
         private InsuranceCategory UpdateInuranceCategory(InsuranceCategory insuranceCategory)
         {
-            using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+            using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
             {
                 var _insuranceCategory = context.InsuranceCategories.Where(x => x.id == insuranceCategory.id).FirstOrDefault();
                 _insuranceCategory.Name = insuranceCategory.Name;
@@ -157,7 +157,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                using (context = new cruse07_DbContext(new DbContextOptions<cruse07_DbContext>()))
+                using (context = new imftenant_DbContext(new DbContextOptions<imftenant_DbContext>()))
                 {
                     var plans = context.InsurancePlans.Where(x => x.InsuranceCategoryId == insuranceCategotyId).AsQueryable().OrderBy(orderBy + " " + direction).ToList();
                     return plans;

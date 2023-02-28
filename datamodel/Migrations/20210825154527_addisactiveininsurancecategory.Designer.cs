@@ -9,7 +9,7 @@ using datamodel;
 
 namespace datamodel.Migrations
 {
-    [DbContext(typeof(cruse07_DbContext))]
+    [DbContext(typeof(imftenant_DbContext))]
     [Migration("20210825154527_addisactiveininsurancecategory")]
     partial class addisactiveininsurancecategory
     {

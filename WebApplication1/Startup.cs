@@ -36,7 +36,7 @@ namespace WebApplication1
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            services.AddDbContext<cruse07_DbContext>(options =>
+            services.AddDbContext<imftenant_DbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
             services.AddSwaggerGen(c =>
             {
